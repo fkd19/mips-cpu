@@ -7,13 +7,13 @@
 `define rd 15:11
 
 module IDandWB(input clk, reset,
-					input [`F] IR_D, PC4_D,
-					output [`F] IR_E, RS_E, RT_E, EXT_E, PC8_E, b_j_jr_tgt,
-					output PC_sel,
-					input[`F] IR_W, PC8_W, ALUOUT_W, DMOUT_W,
-					output [`F] Wdata,
-					input[2:0] Forward_RS_D, Forward_RT_D,
-					input[`F] ALUOUT_M_out, PC8_M_out);
+	input [`F] IR_D, PC4_D,
+	output [`F] IR_E, RS_E, RT_E, EXT_E, PC8_E, b_j_jr_tgt,
+	output PC_sel,
+	input[`F] IR_W, PC8_W, ALUOUT_W, DMOUT_W,
+	output [`F] Wdata,
+	input[2:0] Forward_RS_D, Forward_RT_D,
+	input[`F] ALUOUT_M_out, PC8_M_out);
 	//ID阶段变量声明
 	wire[`F] Rdata1,Rdata2,EXTOUT;
 	wire[2:0] AB_CMPOUT;
