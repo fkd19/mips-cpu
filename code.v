@@ -26,9 +26,9 @@ module fsm(
     );
 
 	parameter s0=4'b0001,
-				 s1=4'b0010,
-				 s2=4'b0100,
-				 s3=4'b1000;
+			  s1=4'b0010,
+		      s2=4'b0100,
+			  s3=4'b1000;
 	reg[3:0] state;
 	reg Z;
 	
