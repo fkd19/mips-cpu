@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 `define F 31:0
 
+//所有的转发mux，最后一位字母表示是哪一级的mux
 module MUX_FORWARD_D(input [`F] PRE, ALUOUT_M, PC8_M,
 							input [1:0] Forward_sel,
 							output [`F] sel_result);
