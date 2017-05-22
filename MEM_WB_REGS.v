@@ -12,14 +12,7 @@ module MEM_WB_REGS(input clk, reset, int_clr,
 						 output[`F] DMOUT_W_out);
 
 	 reg[`F] IR_W, PC8_W, ALUOUT_W, DMOUT_W;
-	 /*
-	 initial begin
-		IR_W <= 0;
-		PC8_W <= 0;
-		ALUOUT_W <= 0;
-		DMOUT_W <= 0;
-	 end
-	 */
+	 
 	 always @(posedge clk)begin
 		if (reset|int_clr)begin
 			IR_W <= 0;
