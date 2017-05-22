@@ -47,7 +47,7 @@ s64_drive _s64(bridge_dev_addr, dip_switch0, dip_switch1, dip_switch2, dip_switc
 LED_drive _LED(clk1, reset, bridge_dev_Wdata, LED_WE, LED_bridge_Rdata, led_light);
 	assign real_user_key=~user_key;
 	
-//用户按钮驱动
+//8位用户按钮
 user_drive _user(bridge_dev_addr, real_user_key, user_bridge_Rdata);
 endmodule
 	
