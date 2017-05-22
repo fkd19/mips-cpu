@@ -2,6 +2,7 @@
 `define F 31:0
 `define func 5:0
 
+//CPUé¡¶å±‚æ–‡ä»¶
 module CPU(input clk1, clk2,
 				input reset,
 				input[`F] bridge_Rdata,
@@ -19,10 +20,10 @@ wire [2:0] Forward_RS_E, Forward_RT_E;
 wire [1:0] Forward_RS_D, Forward_RT_D, Forward_RT_M;
 wire [`F] mux_Wdata_out;
 	
-IF _IF(clk1, clk2, reset, PC_en, PC_sel, int_clr, ERET_PC_sel, b_j_jr_tgt, EPC, IR_D_in, PC4_D_in);//int_clr¿ØÖÆPCÌø×ªµ½ÖĞ¶Ï³ÌĞòÈë¿Ú
-
+IF _IF(clk1, clk2, reset, PC_en, PC_sel, int_clr, ERET_PC_sel, b_j_jr_tgt, EPC, IR_D_in, PC4_D_in);//int_clræ§åˆ¶PCè·³è½¬åˆ°ä¸­æ–­ç¨‹åºå…¥å£
+	
 IF_ID_REGS _IF_ID_REGS(clk1, reset, IF_ID_en, ERET_PC_sel, int_clr, IR_D_in, IR_D_out, PC4_D_in, PC4_D_out);
-// ERET_PC_sel´úÌæĞĞÊ»IF_ID_clrµÄ¹¦ÄÜ
+// ERET_PC_selä»£æ›¿è¡Œé©¶IF_ID_clrçš„åŠŸèƒ½
 IDandWB _IDandWB(clk1, reset, IR_D_out, PC4_D_out, IR_E_in, RS_E_in, RT_E_in, EXT_E_in, PC8_E_in, 
 					  b_j_jr_tgt, PC_sel, ERET_PC_sel, IR_W_out[31:11], IR_W_out[`func], PC8_W_out, ALUOUT_W_out, DMOUT_W_out,
 					  mux_Wdata_out, Forward_RS_D, Forward_RT_D, ALUOUT_M_out, PC8_M_out);
@@ -41,7 +42,7 @@ MEM _MEM(clk1, clk2, reset, IR_M_out, PC8_M_out, ALUOUT_M_out, RT_M_out,IR_W_in,
 
 MEM_WB_REGS _MEM_WB_REGS(clk1, reset, int_clr, IR_W_in, IR_W_out, PC8_W_in, PC8_W_out, 
 								 ALUOUT_W_in, ALUOUT_W_out, DMOUT_W_in, DMOUT_W_out);
-
+//è½¬å‘æ§åˆ¶å•å…ƒ
 Hazard_unit _Hazard_unit(IR_D_out, IR_E_out, IR_M_out, IR_W_out,
 								 Forward_RS_D, Forward_RT_D, Forward_RS_E, Forward_RT_E, Forward_RT_M, 
 								 PC_en, IF_ID_en, ID_EX_clr);
