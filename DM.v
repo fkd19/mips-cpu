@@ -7,7 +7,7 @@
 `define B0 7:0
 `define H1 31:16
 `define H0 15:0
-
+//p8已弃用，换成自带core
 module DM(input clk, reset,
 	  		input [`WORD_ADDR] DM_addr, 
 	  		input [`F] DM_data_in, 
