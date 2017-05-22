@@ -26,7 +26,7 @@ module GRF(input clk, reset,
 			_reg[Wreg] <= Wdata;
 		end
 	end
-	
+	//GRF内部转发
 	assign Rdata1=(Rreg1 == 0)?0:
 					  (GRF_WE && (Wreg == Rreg1))?Wdata:_reg[Rreg1];
 	assign Rdata2=(Rreg2 == 0)?0:
