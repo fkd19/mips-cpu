@@ -8,12 +8,7 @@ module IF_ID_REGS(input clk, reset, IF_ID_en, IF_ID_clr, int_clr,
 						output [`F] PC4_D_out);
 
 	reg[`F] IR_D,PC4_D;
-	/*
-	initial begin
-		IR_D <= 0;
-		PC4_D <= 0;
-	end
-	*/
+	
 	always @(posedge clk)begin
 		if (reset)begin
 			IR_D <= 0;
