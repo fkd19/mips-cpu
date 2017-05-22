@@ -1,13 +1,13 @@
 `timescale 1ns / 1ps
 `define F 31:0
 
-module CP0(input clk,reset,
-			  input[4:0] CP0_RWreg,
-			  input[`F] CP0_Wdata,PC,
-			  input[7:2] HWint,
-			  input CP0_WE,EXL_clr,
-			  output int_clr,
-			  output[`F] EPC,CP0_Dataout);
+module CP0(input clk,reset,	
+	   input[4:0] CP0_RWreg,	//CP0寄存器选择信号
+	   input[`F] CP0_Wdata,PC,
+	   input[7:2] HWint,
+	   input CP0_WE,EXL_clr,
+	   output int_clr,
+	   output[`F] EPC,CP0_Dataout);
 
 	reg[`F] epc;
 	reg[15:10] im;
