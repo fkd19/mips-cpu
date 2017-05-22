@@ -12,14 +12,7 @@ module EX_MEM_REGS(input clk, reset, int_clr,
 						 output [`F] RT_M_out);
 
 	 reg[`F] IR_M, PC8_M, ALUOUT_M, RT_M;
-	 /*
-	 initial begin
-			IR_M <= 0;
-			PC8_M <= 0;
-			ALUOUT_M <= 0;
-			RT_M <= 0;
-		end
-	 */
+	 
 	 always @(posedge clk)begin
 		if (reset)begin
 			IR_M <= 0;
@@ -27,7 +20,7 @@ module EX_MEM_REGS(input clk, reset, int_clr,
 			ALUOUT_M <= 0;
 			RT_M <= 0;
 		end
-		else if (int_clr)begin
+		 else if (int_clr)begin		//如果中断信号到来
 			IR_M <= 0;
 			PC8_M <= PC8_M;
 			ALUOUT_M <= 0;
