@@ -9,11 +9,11 @@
 `define H0 15:0
 
 module DM(input clk, reset,
-			 input [`WORD_ADDR] DM_addr, 
-			 input [`F] DM_data_in, 
-			 output[`F] DM_data_out,
-			 input DM_WE,
-			 input[3:0] BYTE_WE);
+	  		input [`WORD_ADDR] DM_addr, 
+	  		input [`F] DM_data_in, 
+	  		output[`F] DM_data_out,
+	  		input DM_WE,
+	  		input[3:0] BYTE_WE);
 
 	reg[`F] mem[2047:0];
 	integer i;
