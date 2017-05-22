@@ -2,6 +2,7 @@
 `define F 31:0
 `define func 5:0
 
+//用于转发控制单元中，将所有指令归类，第一个字母代表所在的流水级
 module D_TRANSLATE(input [31:16] IR, input [`func] IR_FUNC,
 					  output B,CAL_R,CAL_I,LOAD,STORE,JR,JALR);
 
