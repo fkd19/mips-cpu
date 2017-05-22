@@ -8,6 +8,7 @@
 `define mode 2:1
 `define im 3
 
+//定时中断发生器
 module timer(
     input clk,
     input reset,
@@ -19,14 +20,7 @@ module timer(
 
 	reg[`F] preset, count, state;
 	reg[3:0] ctrl; 
-	/*
-	initial begin
-		ctrl <= 0;
-		preset <= 0;
-		count <= 0;
-		state <= `LOAD;
-	end
-	*/
+	
 	always @(posedge clk)begin
 		if (reset)begin
 			ctrl <= 0;
