@@ -17,11 +17,7 @@ module CTRL_M(input clk, reset,
 	 
 	 wire sb,sh,sw,beq,bne,blez,bgtz,bltz,bgez,j,jal,jalr,jr,mfc0,mtc0,eret;
 	 reg epc_sign;
-	 /*
-	 initial begin
-		epc_sign <= 0;
-	 end
-	 */
+	 
 M_DEC DEC_CTRL_M(IR[31:16],IR_FUNC,sb,sh,sw,beq,bne,blez,bgtz,bltz,bgez,j,jal,jalr,jr,mfc0,mtc0,eret);
 
 	assign BE_CTRL=((DM_addr < 32'h0000_2000) && sb)?3'd3:
@@ -31,7 +27,7 @@ M_DEC DEC_CTRL_M(IR[31:16],IR_FUNC,sb,sh,sw,beq,bne,blez,bgtz,bltz,bgez,j,jal,ja
 	assign EXL_clr=eret;
 	assign cpu_WE=sw && (DM_addr >= 32'h0000_7f00);
 	assign CP0_sel=mfc0;
-	
+	//特意延迟了一个周期，不是规范的写法，有待改正。
 	always @(posedge clk)begin
 		if(reset)	epc_sign <= 0;
 		else if (beq|bne|bgez|bgtz|blez|bltz|j|jal|jalr|jr)		epc_sign <= 1;
