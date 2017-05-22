@@ -7,7 +7,7 @@
 `define func 5:0
 
 module D_DEC(input [`op] IR, input[`rt] IR1, input[`func] IR2,
-					output lb,lbu,lh,lhu,lw,sb,sh,sw,addi,addiu,slti,sltiu,beq,bne,blez,bgtz,bltz,bgez,j,jal,jalr,jr,eret);
+		output lb,lbu,lh,lhu,lw,sb,sh,sw,addi,addiu,slti,sltiu,beq,bne,blez,bgtz,bltz,bgez,j,jal,jalr,jr,eret);
 
 	
 	assign lb =(IR[`op] == 6'b100000)?1'b1:1'b0;
@@ -41,8 +41,8 @@ module D_DEC(input [`op] IR, input[`rt] IR1, input[`func] IR2,
 endmodule
 
 module E_DEC(input [`op] IR, input [`func] IR1,
-					output lb,lbu,lh,lhu,lw,sb,sh,sw,sub,subu,sll,srl,sra,sllv,srlv,srav,
-					  _and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu);
+				output lb,lbu,lh,lhu,lw,sb,sh,sw,sub,subu,sll,srl,sra,sllv,srlv,srav,
+						_and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu);
 
 	
 	assign lb =(IR[`op] == 6'b100000)?1'b1:1'b0;
@@ -83,7 +83,7 @@ module E_DEC(input [`op] IR, input [`func] IR1,
 endmodule
 
 module M_DEC(input [31:16] IR, input[`func] IR1,
-					output sb,sh,sw,beq,bne,blez,bgtz,bltz,bgez,j,jal,jalr,jr,mfc0,mtc0,eret);
+				output sb,sh,sw,beq,bne,blez,bgtz,bltz,bgez,j,jal,jalr,jr,mfc0,mtc0,eret);
 
 	assign sb =(IR[`op] == 6'b101000)?1'b1:1'b0;
 	assign sh =(IR[`op] == 6'b101001)?1'b1:1'b0;
@@ -107,7 +107,7 @@ module M_DEC(input [31:16] IR, input[`func] IR1,
 endmodule
 
 module W_DEC(input [31:21] IR1, input[5:0] IR2,
-					output lb,lbu,lh,lhu,lw,add,addu,sub,subu,sll,srl,sra,sllv,srlv,srav,
+				output lb,lbu,lh,lhu,lw,add,addu,sub,subu,sll,srl,sra,sllv,srlv,srav,
 						_and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu,jal,jalr,mfc0);
 
 	
@@ -153,10 +153,10 @@ module W_DEC(input [31:21] IR1, input[5:0] IR2,
 endmodule
 
 module HAZ_D_DEC(input [31:16] IR, 
-					  input [`func] IR1,
-					  output lb,lbu,lh,lhu,lw,sb,sh,sw,add,addu,sub,subu,sll,srl,sra,sllv,srlv,srav,
-							   _and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu,beq,bne,blez,bgtz,bltz,bgez,
-							   jalr,jr,mfc0);
+					input [`func] IR1,
+					output lb,lbu,lh,lhu,lw,sb,sh,sw,add,addu,sub,subu,sll,srl,sra,sllv,srlv,srav,
+							_and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu,beq,bne,blez,bgtz,bltz,bgez,
+							jalr,jr,mfc0);
 
 	assign lb =(IR[`op] == 6'b100000)?1'b1:1'b0;
 	assign lbu=(IR[`op] == 6'b100100)?1'b1:1'b0;
@@ -211,8 +211,8 @@ endmodule
 
 module HAZ_E_DEC(input [31:21] IR, input [`func] IR1,
 					output lb,lbu,lh,lhu,lw,sb,sh,sw,add,addu,sub,subu,sll,srl,sra,sllv,srlv,srav,
-							 _and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu,
-							 mfc0,mtc0);
+							_and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu,
+							mfc0,mtc0);
 
 	
 	assign lb =(IR[`op] == 6'b100000)?1'b1:1'b0;
@@ -259,8 +259,8 @@ endmodule
 
 module HAZ_M_DEC(input [31:21] IR, input [`func] IR1,
 					output lb,lbu,lh,lhu,lw,sb,sh,sw,add,addu,sub,subu,sll,srl,sra,sllv,srlv,srav,
-							 _and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu,
-							 jal,jalr,mfc0,mtc0);
+							_and,_or,_xor,_nor,addi,addiu,andi,ori,xori,lui,slt,slti,sltiu,sltu,
+							jal,jalr,mfc0,mtc0);
 
 	
 	assign lb =(IR[`op] == 6'b100000)?1'b1:1'b0;
