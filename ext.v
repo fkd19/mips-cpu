@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 `define F 31:0
 
+//扩展器，支持有符号扩展和无符号扩展
 module EXT(input [15:0] imm16,
 			  input extop,
 			  output [`F] extout);
@@ -16,6 +17,7 @@ module EXT(input [15:0] imm16,
 	assign extout=(!extop)?zeroext:signext;
 endmodule
 
+//有符号比较器
 module CMP(input [`F] A,B,
 			  output[2:0] cmpout);
 	 
@@ -24,6 +26,7 @@ module CMP(input [`F] A,B,
 	 assign cmpout[0]=({B[31],A[30:0]} < {A[31],B[30:0]})?1'b1:1'b0;
 endmodule
 
+//少于32位扩展到32位，为lbu,lhu,lb,lh服务
 module XEXT(input [1:0] ADDR,
 				input [`F] DMOUT,
 				input [2:0] XEXT_OP,
@@ -45,6 +48,7 @@ module XEXT(input [1:0] ADDR,
 							(XEXT_OP == 1)?(b >>  24):DMOUT;
 endmodule
 
+//产生字节写信号，为sb,sh等指令服务
 module BE_EXT(
     input [1:0] ADDR,
 	 input [2:0] BE_CTRL,
