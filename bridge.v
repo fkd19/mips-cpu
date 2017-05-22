@@ -2,6 +2,7 @@
 `define F 31:0
 `define H 15:0
 
+//实现cpu与外设信息沟通
 module bridge(input[`F]  CPU_addr,CPU_Wdata,
 				  input CPU_WE,
 				  output[7:2] CPU_HWint,
@@ -10,7 +11,8 @@ module bridge(input[`F]  CPU_addr,CPU_Wdata,
 				  input IRQ, urat_int,
 				  output[`F] DEV_Wdata, DEV_addr,
 				  output timer_WE, LED_WE, DT_WE, urat_WE);
-				  
+				
+	//下面代码中的具体数值为该外设在内存中的编址
 	assign DEV_Wdata=CPU_Wdata;
 	assign DEV_addr=CPU_addr;
 	assign CPU_HWint={4'b0,urat_int,IRQ};
