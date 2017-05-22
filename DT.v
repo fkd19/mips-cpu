@@ -7,7 +7,7 @@
 `define DD 3
 `define PRESET 18'd100000
 
-//八位LED显示十六进制数，分为左右两组，一组四个数。在计数器模式下，每次每组只显示1个数，0.1秒内遍历一次所有的LED管，形成八只LED同时发光的效果
+//八位数码管显示十六进制数，分为左右两组，一组四个数。在计数器模式下，每次每组只显示1个数，0.1秒内遍历一次所有的数码管，形成八只数码管同时发光的效果
 module DT_drive(input clk, reset,
 					  input [`F] DT_data_in, addr, 
 					  input DT_WE,
@@ -88,7 +88,7 @@ DT_decoder _N7_(N_DATA[31:28], N7_1);
 	assign tube2_print = SG;
 endmodule
 
-//将4位二进制数转化为晶体管对应管亮灯的信号
+//将4位二进制数转化为数码管亮灯的信号
 module DT_decoder(input[3:0] num, output[`DT] drive_signal);
 	assign drive_signal=(num == 4'h1)?8'b1100_1111:
 						(num == 4'h2)?8'b1001_0010:
