@@ -18,26 +18,30 @@ module IDandWB(input clk, reset,
 					output [`F] Wdata,
 					input[1:0] Forward_RS_D, Forward_RT_D,
 					input[`F] ALUOUT_M_out, PC8_M_out);
-	//ID½×¶Î±äÁ¿ÉùÃ÷
+	//IDé˜¶æ®µå˜é‡å£°æ˜
 	wire[`F] Rdata1,Rdata2,EXTOUT;
 	wire[2:0] A0_CMPOUT;
 	wire[1:0] b_j_jr_sel;
 	wire EXT_sel, AB_equal;
 	wire[`F] MF_RS_D_out;
 	wire[`F] MF_RT_D_out;
-	//WB½×¶Î±äÁ¿ÉùÃ÷
+	//WBé˜¶æ®µå˜é‡å£°æ˜
 	wire[1:0] Wreg_sel, Wdata_sel;
 	wire[4:0] Wreg;
 	wire[2:0] XEXT_OP;
 	wire[`F] XEXTOUT;
 	wire GRF_WE;
-	//ID½×¶ÎÖ´ĞĞ
-MUX_FORWARD_D MF_RS_D(Rdata1, ALUOUT_M_out, PC8_M_out, Forward_RS_D, MF_RS_D_out);//ÕâÀïµÄPC8_W²»ÓÃ¼Óºó×º_out
-MUX_FORWARD_D MF_RT_D(Rdata2, ALUOUT_M_out, PC8_M_out, Forward_RT_D, MF_RT_D_out);//´«½øÀ´µÄ¾ÍÊÇPC8_W
+	//IDé˜¶æ®µæ‰§è¡Œ
+//è½¬å‘
+MUX_FORWARD_D MF_RS_D(Rdata1, ALUOUT_M_out, PC8_M_out, Forward_RS_D, MF_RS_D_out);//è¿™é‡Œçš„PC8_Wä¸ç”¨åŠ åç¼€_out
+MUX_FORWARD_D MF_RT_D(Rdata2, ALUOUT_M_out, PC8_M_out, Forward_RT_D, MF_RT_D_out);//ä¼ è¿›æ¥çš„å°±æ˜¯PC8_W
+
 GRF _GRF(clk, reset, IR_D[`rs], IR_D[`rt], Wreg, Wdata, GRF_WE, Rdata1, Rdata2);
+//æ‰©å±•å™¨
 EXT _EXT(IR_D[`I16], EXT_sel, EXTOUT);
 assign AB_equal=(MF_RS_D_out == MF_RT_D_out)?1'b1:1'b0;
 CMP _CMP_A0(MF_RS_D_out, 0, A0_CMPOUT);
+//Dçº§åé¦ˆçš„next pc
 NPC _NPC(PC4_D, IR_D[`I26], MF_RS_D_out, b_j_jr_sel, b_j_jr_tgt);
 CTRL_D _CTRL_D(IR_D[`op], IR_D[`rt], IR_D[`func], AB_equal, A0_CMPOUT, EXT_sel, b_j_jr_sel, PC_sel, ERET_PC_sel);
 ADDER _PC4plus4(PC4_D, PC8_E);
@@ -45,9 +49,12 @@ ADDER _PC4plus4(PC4_D, PC8_E);
 	assign EXT_E=EXTOUT;
 	assign RS_E=Rdata1;
 	assign RT_E=Rdata2;
-//WB½×¶ÎÖ´ĞĞ
+//WBé˜¶æ®µæ‰§è¡Œ
+//æ‰©å±•ï¼Œä¸»è¦ç”¨äºlb, lh, lbu, lhu
 XEXT _XEXT(ALUOUT_W[1:0], DMOUT_W, XEXT_OP, XEXTOUT);
+//å†™å¯„å­˜å™¨é€‰æ‹©
 mux_Wreg _mux_Wreg(IR_W[`rt], IR_W[`rd], Wreg_sel, Wreg);
+//å†™å…¥æ•°æ®é€‰æ‹©
 mux_Wdata _mux_Wdata(ALUOUT_W, XEXTOUT, PC8_W, Wdata_sel, Wdata);
 CTRL_W _CTRL_W(IR_W[31:21], IR_W_FUNC, Wreg_sel, Wdata_sel, GRF_WE, XEXT_OP);
 endmodule
