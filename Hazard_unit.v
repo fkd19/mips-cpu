@@ -15,16 +15,16 @@ module Hazard_unit(
     );
 	 
 	 wire stall_b, stall_load, stall_jr_jalr;
-	 
-											  wire B_D, CAL_R_D, CAL_I_D, LOAD_D, STORE_D, JR_D, JALR_D;
+	 //第一部分代表指令类型，第二部分代表指令所在流水级，例如CAL_R_D表示两个寄存器的计算类指令，在D级
+								   wire B_D, CAL_R_D, CAL_I_D, LOAD_D, STORE_D, JR_D, JALR_D;
 D_TRANSLATE D(IR_D[31:16], IR_D[`func], B_D, CAL_R_D, CAL_I_D, LOAD_D, STORE_D, JR_D, JALR_D);
-											  wire CAL_R_E, CAL_I_E, LOAD_E, STORE_E, MTC0_E;
+								   wire CAL_R_E, CAL_I_E, LOAD_E, STORE_E, MTC0_E;
 E_TRANSLATE E(IR_E[31:21], IR_E[`func], CAL_R_E, CAL_I_E, LOAD_E, STORE_E, MTC0_E);
-											  wire CAL_R_M, CAL_I_M, LOAD_M, STORE_M, JAL_M, JALR_M, MTC0_M;
+								   wire CAL_R_M, CAL_I_M, LOAD_M, STORE_M, JAL_M, JALR_M, MTC0_M;
 M_TRANSLATE M(IR_M[31:21], IR_M[`func], CAL_R_M, CAL_I_M, LOAD_M, STORE_M, JAL_M, JALR_M, MTC0_M);
-											  wire CAL_R_W, CAL_I_W, LOAD_W, JAL_W, JALR_W;
+								   wire CAL_R_W, CAL_I_W, LOAD_W, JAL_W, JALR_W;
 W_TRANSLATE W(IR_W[31:21], IR_W[`func], CAL_R_W, CAL_I_W, LOAD_W, JAL_W, JALR_W);
-//��ͣ	
+//暂停
 assign stall_b=(B_D &&  CAL_R_E  && (IR_D[`rs] == IR_E[`rd]) && (IR_D[`rs] != 0)) 
 				|| (B_D &&  CAL_R_E  && (IR_D[`rt] == IR_E[`rd]) && (IR_D[`rt] != 0))
 				|| (B_D && (CAL_I_E|LOAD_E) && (IR_D[`rs] == IR_E[`rt]) && (IR_D[`rs] != 0)) 
@@ -45,7 +45,7 @@ assign PC_en=~stall;
 assign IF_ID_en=~stall;
 assign ID_EX_clr=stall;
 	 
-//ת��
+//转发
 assign Forward_RS_D=(CAL_R_M && (B_D|JR_D|JALR_D) && (IR_M[`rd] == IR_D[`rs]) && (IR_D[`rs] != 0))?2'd1: 
 						  (CAL_I_M && (B_D|JR_D|JALR_D) && (IR_M[`rt] == IR_D[`rs]) && (IR_D[`rs] != 0))?2'd1:
 						  (JAL_M   && (B_D|JR_D|JALR_D) && (5'd31 == IR_D[`rs]))?2'd2:
