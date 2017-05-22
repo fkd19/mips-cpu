@@ -14,15 +14,7 @@ module ID_EX_REGS(input clk, reset, ID_EX_clr, int_clr,
 						output [`F] EXT_E_out);
 
 	 reg[`F] IR_E, PC8_E, RS_E, RT_E, EXT_E;
-	 /*
-	 initial begin
-			IR_E <= 0;
-			PC8_E <= 0;
-			RS_E <= 0;
-			RT_E <= 0;
-			EXT_E <= 0;
-		end
-	 */
+	 
 	 always @(posedge clk)begin
 		if (reset)begin
 			IR_E <= 0;
