@@ -33,6 +33,7 @@ module mux_PC(input [`F] PC4, b_j_jr_tgt, EPC,
 					(PC_sel == 1)?b_j_jr_tgt:PC4;
 endmodule
 
+//从b类指令，j类指令，jr类指令中选一个输出
 module mux_b_j_jr(input [`F] b_tgt, j_tgt, jr_tgt,
 						input [1:0] b_j_jr_sel,
 						output[`F] NPC);
