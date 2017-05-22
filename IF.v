@@ -6,18 +6,19 @@ module IF(input clk1, clk2,reset,PC_en,PC_sel,int_PC_sel, ERET_PC_sel,
 			 output[`F] IR_D,PC4_D);
 	 
 	 wire[`F] NPC, pc, im_pc;
+	//é€‰æ‹©è·³è½¬æ‰€å¯¹åº”çš„pcå€¼è¿˜æ˜¯ä¸è·³è½¬æ‰€å¯¹åº”çš„pcå€¼
 	 mux_PC _mux_PC(PC4_D, b_j_jr_tgt, EPC, ERET_PC_sel, int_PC_sel, PC_sel, NPC);
 	 PC _PC(clk1, reset, PC_en, int_PC_sel, ERET_PC_sel, NPC, pc);
 	 ADDER _PCplus4(pc, PC4_D);
 	 assign im_pc=pc-32'h0000_3000;
 
-	 //cpt_1227_1006 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);			//calculator 3-0Î»¼õÈ¥7-4Î»
-	 //cpt_1229_1905 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);			//calculator(»ã±à´úÂëÒÑÓÅ»¯) 3-0Î»¼õÈ¥7-4Î»
-	 //cpt_1230_1201 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);			//calculator(»ã±à´úÂëÒÑÓÅ»¯) 7-4Î»¼õÈ¥3-0Î»
+	 //cpt_1227_1006 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);			//calculator 3-0ä½å‡å»7-4ä½
+	 //cpt_1229_1905 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);			//calculator(æ±‡ç¼–ä»£ç å·²ä¼˜åŒ–) 3-0ä½å‡å»7-4ä½
+	 //cpt_1230_1201 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);			//calculator(æ±‡ç¼–ä»£ç å·²ä¼˜åŒ–) 7-4ä½å‡å»3-0ä½
 	 //counter_1227_1040 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);		//counter
-	 //counter_1229_1846 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);		//counter(»ã±à´úÂëÒÑÓÅ»¯)
-	 //urat_1226_2355 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);		//ÊµÏÖuart»ØÏÔ
-	 //uart_1229_0133 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);		//ÊµÏÖuart»ØÏÔ(»ã±à´úÂëÒÑÓÅ»¯)
-	 p8_up_1_1503 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);          //¿ÎÉÏ²âÊÔµÚÒ»Ìâ
-	 //p8_up_2_1533 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);          //¿ÎÉÏ²âÊÔµÚ¶şÌâ
+	 //counter_1229_1846 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);		//counter(æ±‡ç¼–ä»£ç å·²ä¼˜åŒ–)
+	 //urat_1226_2355 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);		//å®ç°uartå›æ˜¾
+	 //uart_1229_0133 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);		//å®ç°uartå›æ˜¾(æ±‡ç¼–ä»£ç å·²ä¼˜åŒ–)
+	 p8_up_1_1503 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);          //è¯¾ä¸Šæµ‹è¯•ç¬¬ä¸€é¢˜
+	 //p8_up_2_1533 _IM(clk2, 1'b0, im_pc[12:2], 32'b0, IR_D);          //è¯¾ä¸Šæµ‹è¯•ç¬¬äºŒé¢˜
 endmodule
