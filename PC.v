@@ -5,11 +5,7 @@ module PC(input clk, reset, PC_en, int_PC_sel, ERET_PC_sel,
 			 output [`F] PC);
 			 
 	reg[`F] pc;
-	/*
-	initial begin
-		pc = 32'h0000_3000;
-	end
-	*/
+	
 	always @(posedge clk)begin
 		if (reset)	pc <= 32'h0000_3000;
 		else if(PC_en || int_PC_sel || ERET_PC_sel)		pc <= NPC;
