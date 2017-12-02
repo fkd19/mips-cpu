@@ -1,0 +1,31 @@
+#-----------------------------------------------------------
+# Vivado v2017.1 (64-bit)
+# SW Build 1846317 on Fri Apr 14 18:55:03 MDT 2017
+# IP Build 1846188 on Fri Apr 14 20:52:08 MDT 2017
+# Start of session at: Wed May 24 08:57:24 2017
+# Process ID: 8696
+# Current directory: F:/test/project_1/project_1.srcs/sources_1/ip/ahblite_axi_bridge_0
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3336 F:\test\project_1\project_1.srcs\sources_1\ip\ahblite_axi_bridge_0\ahblite_axi_bridge_0.dcp
+# Log file: F:/test/project_1/project_1.srcs/sources_1/ip/ahblite_axi_bridge_0/vivado.log
+# Journal file: F:/test/project_1/project_1.srcs/sources_1/ip/ahblite_axi_bridge_0\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_checkpoint {F:\test\project_1\project_1.srcs\sources_1\ip\ahblite_axi_bridge_0\ahblite_axi_bridge_0.dcp}
+Command: open_checkpoint {F:\test\project_1\project_1.srcs\sources_1\ip\ahblite_axi_bridge_0\ahblite_axi_bridge_0.dcp}
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.097 . Memory (MB): peak = 764.520 ; gain = 0.000
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado2017/Vivado/2017.1/data/ip'.
+INFO: [Project 1-479] Netlist was created with Vivado 2017.1
+INFO: [Device 21-403] Loading part xc7a200tfbg676-2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2017.1 (64-bit) build 1846317
+open_checkpoint: Time (s): cpu = 00:00:51 ; elapsed = 00:00:28 . Memory (MB): peak = 1132.129 ; gain = 379.754
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed May 24 08:58:34 2017...

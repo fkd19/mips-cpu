@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2017.1 (64-bit)
+# SW Build 1846317 on Fri Apr 14 18:55:03 MDT 2017
+# IP Build 1846188 on Fri Apr 14 20:52:08 MDT 2017
+# Start of session at: Wed May 24 08:57:24 2017
+# Process ID: 8696
+# Current directory: F:/test/project_1/project_1.srcs/sources_1/ip/ahblite_axi_bridge_0
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3336 F:\test\project_1\project_1.srcs\sources_1\ip\ahblite_axi_bridge_0\ahblite_axi_bridge_0.dcp
+# Log file: F:/test/project_1/project_1.srcs/sources_1/ip/ahblite_axi_bridge_0/vivado.log
+# Journal file: F:/test/project_1/project_1.srcs/sources_1/ip/ahblite_axi_bridge_0\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_checkpoint {F:\test\project_1\project_1.srcs\sources_1\ip\ahblite_axi_bridge_0\ahblite_axi_bridge_0.dcp}
